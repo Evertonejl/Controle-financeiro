@@ -1,0 +1,157 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    outline: none;
+}
+
+body{
+	background-color: black;
+	
+	width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+main {
+	background-color: rgb(20,20,20);
+	max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0px 0px 5px #ccc;
+	
+	
+}
+
+.resume{
+    display: flex;
+    padding: 10px 0;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+	color: #fff;
+}
+
+.resume>div{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+}
+
+.divDesc, .divType, .divAmount{
+    display: flex;
+    flex-direction: column;
+}
+
+.newItem>button{
+    background-color: #2c73d2;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 34px;
+}
+.newItem{
+	color: white;
+}
+
+input, select{
+    padding: 5px;
+	border-radius: 5px;
+	background: rgb(41,41,41);
+    border: none;
+	color: #fff;
+}
+
+.divTable{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width: 98%;
+    padding: 20px 0;
+    border-radius: 5px;
+    
+}
+
+th{
+    text-align: start;
+    border-bottom: inset;
+    padding: 5px;
+	color: #fff;
+}
+
+i {
+    font-size: 25px;
+}
+
+.bxs-chevron-up-circle{
+    color: #00C947;
+}
+
+.bxs-chevron-down-circle{
+    color: #D83121;
+}
+.bx-trash{
+	color: #fff;
+}
+.columnAction{
+    width: 40px;
+    text-align: center;
+}
+.columnAction>button{
+    background: transparent;
+    border: none;
+}
+
+.columnAmount{
+    width: 30%;
+	
+}
+
+.columnType{
+    width: 80px;
+    text-align: center;
+}
+td{
+	color: #fff;
+}
+
+@media (max-width: 700px){
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+main {
+    max-width: 550px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.resume{
+    display: flex;
+    padding: 10px 0;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+}
