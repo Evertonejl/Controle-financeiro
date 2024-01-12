@@ -7,59 +7,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de finanças</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
     <script src='js/main.js'></script>
 </head>
 
-<body>
+<body id="fundo">
     <main>
-        <div class="resume">
-            <div>
-                Entradas: R$
-                <span class="incomes">0.00</span>
-            </div>
-            <div>
-                Saídas: R$
-                <span class="expenses">0.00</span>
-            </div>
-            <div>
-                Total: R$
-                <span class="total">0.00</span>
-            </div>
+        <div class="sistema" id="sistema">
+            <h2> Sistema de entrada e saida</h2>
         </div>
-        <div class="newItem">
-            <div class="divDesc">
-                <label for="desc">Descrição</label>
-                <input type="text" id="desc" />
+        <div class="container" id="financa">
+            <i id="mode_icon" class="fa-solid fa-moon"></i>
+            <div class="resume">
+                <div>
+                    Entradas: R$
+                    <span class="incomes">0.00</span>
+                </div>
+                <div>
+                    Saídas: R$
+                    <span class="expenses">0.00</span>
+                </div>
+                <div>
+                    Total: R$
+                    <span class="total">0.00</span>
+                </div>
             </div>
-            <div class="divAmount">
-                <label for="amount">Valor</label>
-                <input type="number" id="amount" />
+            <div class="newItem">
+                <div class="divDesc">
+                    <label for="desc">Descrição</label>
+                    <input type="text" id="desc" />
+                </div>
+                <div class="divAmount">
+                    <label for="amount">Valor</label>
+                    <input type="number" id="amount" />
+                </div>
+                <div class="divType">
+                    <label for="type">Tipo</label>
+                    <select id="type">
+                        <option>Entrada</option>
+                        <option>Saída</option>
+                    </select>
+                </div>
+                <button id="btnNew">Incluir</button>
             </div>
-            <div class="divType">
-                <label for="type">Tipo</label>
-                <select id="type">
-                    <option>Entrada</option>
-                    <option>Saída</option>
-                </select>
+            <div class="divTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th class="columnAmount">Valor</th>
+                            <th class="columnType">Tipo</th>
+                            <th class="columnAction"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    
+                    </tbody>
+                </table>
             </div>
-            <button id="btnNew">Incluir</button>
-        </div>
-        <div class="divTable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Descrição</th>
-                        <th class="columnAmount">Valor</th>
-                        <th class="columnType">Tipo</th>
-                        <th class="columnAction"></th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
         </div>
     </main>
     <script src="js/script.js"></script>

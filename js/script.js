@@ -7,24 +7,26 @@ const btnNew = document.querySelector("#btnNew");
 const incomes = document.querySelector(".incomes");
 const expenses = document.querySelector(".expenses");
 const total = document.querySelector(".total");
+const mode = document.getElementById("mode_icon");
+
 
 let items;
 
 btnNew.onclick = () => {
-	if (descItem.value === "" || amount.value === "" || type.value === "") {
-		return alert("Preencha todos os campos!");
+  if (descItem.value === "" || amount.value === "" || type.value === ""){
+	return alert("Preencha todos os campos!");
 	}
-
-	items.push({
-		desc: descItem.value,
-		amount: Math.abs(amount.value).toFixed(2),
-		type: type.value,
-	});
-
+	
+ items.push({
+	desc: descItem.value,
+	amount: Math.abs(amount.value).toFixed(2),
+	type: type.value,
+ });
+ 
 	setItensBD();
-
+	
 	loadItens();
-
+	
 	descItem.value = "";
 	amount.value = "";
 };
@@ -32,62 +34,88 @@ function deleteItem(index) {
 	items.splice(index, 1);
 	setItensBD();
 	loadItens();
-
+	
 }
 
-function insertItem(item, index) {
+function insertItem(item, index){
 	let tr = document.createElement("tr");
-
+	
 	tr.innerHTML = `
 	   <td>${item.desc}</td>
 	   <td>R$ ${item.amount}</td>
-	   <td class="columnType">${item.type === "Entrada"
-			? '<i class="bx bxs-chevron-up-circle"></i>'
-			: '<i class="bx bxs-chevron-down-circle"></i>'
-		}</td>
+	   <td class="columnType">${
+		   item.type === "Entrada"
+		   ? '<i class="bx bxs-chevron-up-circle"></i>'
+		   : '<i class="bx bxs-chevron-down-circle"></i>'
+	   }</td>
 	   <td class="columnAction">
 	     <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
 	  </td>
 	
 	`;
 	tbody.appendChild(tr);
+	
+} 
 
-}
-
-function loadItens() {
-	items = getItensBD();
-	tbody.innerHTML = "";
-	items.forEach((item, index) => {
-		insertItem(item, index);
-	});
+function loadItens(){
+ items = getItensBD();
+ tbody.innerHTML = "";
+ items.forEach((item, index) => {
+	insertItem(item, index);
+ });
 	getTotals();
 }
 function getTotals() {
-	const amountIncomes = items
-		.filter((item) => item.type === "Entrada")
-		.map((transaction) => Number(transaction.amount));
+  const amountIncomes = items
+    .filter((item) => item.type === "Entrada")
+    .map((transaction) => Number(transaction.amount));
 
-	const amountExpenses = items
-		.filter((item) => item.type === "Saída")
-		.map((transaction) => Number(transaction.amount));
+  const amountExpenses = items
+    .filter((item) => item.type === "Saída")
+    .map((transaction) => Number(transaction.amount));
 
-	const totalIncomes = amountIncomes
-		.reduce((acc, cur) => acc + cur, 0)
-		.toFixed(2);
+  const totalIncomes = amountIncomes
+    .reduce((acc, cur) => acc + cur, 0)
+    .toFixed(2);
 
-	const totalExpenses = Math.abs(
-		amountExpenses.reduce((acc, cur) => acc + cur, 0)
-	).toFixed(2);
+  const totalExpenses = Math.abs(
+    amountExpenses.reduce((acc, cur) => acc + cur, 0)
+  ).toFixed(2);
 
-	const totalItems = (totalIncomes - totalExpenses).toFixed(2);
+  const totalItems = (totalIncomes - totalExpenses).toFixed(2);
 
-	incomes.innerHTML = totalIncomes;
-	expenses.innerHTML = totalExpenses;
-	total.innerHTML = totalItems;
+  incomes.innerHTML = totalIncomes;
+  expenses.innerHTML = totalExpenses;
+  total.innerHTML = totalItems;
 }
-
+    
 const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
 const setItensBD = () =>
-	localStorage.setItem("db_items", JSON.stringify(items));
-
-loadItens();
+   localStorage.setItem("db_items", JSON.stringify(items));
+   
+   loadItens();
+   
+   // dark mode
+   
+   mode.addEventListener("click", () => {
+	   const fundo = document.getElementById("fundo");
+	   const main = document.getElementById("financa");
+	   const sistema = document.getElementById("sistema");
+	   if(mode.classList.contains("fa-moon")){
+		   mode.classList.remove("fa-moon");
+		   mode.classList.add("fa-sun");
+		   
+		   main.classList.add("dark");
+		   fundo.classList.add("dark2");
+		   sistema.classList.add("dark2");
+		   return;
+		   
+	   }
+	   mode.classList.add("fa-moon");
+	   mode.classList.remove("fa-sun");
+	   main.classList.remove("dark");
+	    fundo.classList.remove("dark2");
+	    sistema.classList.remove("dark2");
+   })
+   
+   
